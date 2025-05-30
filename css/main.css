@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap');
+
+:root {
+    --main-color: #FFDCDC;
+    --button-color: #FFE8CD;
+    --text-color: #805799;
+    --header-color: #FFD6BA;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--main-color);
+    font-family: 'Bungee', sans-serif;
+    color: var(--text-color);
+    min-height: 100%;
+}
+
+.button {
+    background-color: var(--text-color);
+    color: var(--main-color);
+    font-size: clamp(0.5rem, 1.2rem, 1.2rem);
+    border-radius: 50px;
+    padding: 0.5rem;
+}
+
+.brand {
+    font-size: clamp(1rem, 2.5rem, 3rem)
+}
+
+img {
+    height: 60px;
+    fill: #953cc9;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: var(--header-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);    
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+    }
+}
