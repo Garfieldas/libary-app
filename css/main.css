@@ -50,8 +50,16 @@ a {
     color: var(--text-color);    
 }
 
+a:hover {
+    cursor: pointer
+}
+
 input,button {
     font: inherit;
+}
+
+dialog::backdrop {
+    background-color: var(--main-color);
 }
 
 form {
@@ -61,6 +69,18 @@ form {
 
 .form-group {
     display: grid;
+}
+
+.form-group:has(.close) {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -0.8rem;
+    margin-right: -0.5rem;
+}
+
+.form-group .close {
+    font-size: clamp(0.5rem, 1.3rem, 1.5rem);
+    cursor: pointer;
 }
 
 input {
