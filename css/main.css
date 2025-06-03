@@ -143,6 +143,7 @@ form .button {
 .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 }
 
 .book-card {
@@ -167,10 +168,13 @@ form .button {
     padding: 0.2rem;
 }
 
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 footer {
-    bottom: 0;
-    width: 100%;
-    position: fixed;
     text-align: center;
     font-size: 1.5rem;
 }
