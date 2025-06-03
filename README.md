@@ -16,7 +16,7 @@ A simple Library management app where users can add, track, and manage books. Bu
 
 ## 🖼️ Screenshots
 
-![Library App Screenshot](https://i.ibb.co/mmdZddG/Screenshot-2025-06-03-at-23-03-18.png)
+![Library App Screenshot](https://i.ibb.co/jPv4794C/Screenshot-2025-06-03-at-23-14-14.png)
 
 ![Library App Screenshot](https://i.ibb.co/ccrm7z58/Screenshot-2025-06-03-at-22-42-18.png)
 
