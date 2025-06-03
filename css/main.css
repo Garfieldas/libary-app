@@ -25,6 +25,7 @@ body, html {
     font-size: clamp(0.5rem, 1.2rem, 1.2rem);
     border-radius: 50px;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
 .button-read {

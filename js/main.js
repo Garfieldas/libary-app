@@ -8,7 +8,7 @@ const pagesInput = document.querySelector('#pages');
 const statusInput = document.querySelector('#status');
 const submitBtn = document.querySelector('#submitBtn');
 
-const bookArray = [];
+let bookArray = [];
 
 function Book(title, author, pages, status) {
 
@@ -35,8 +35,8 @@ const addBook = () => {
   const pages = pagesInput.value;
   const status = statusInput.checked
 
-  if (!title |
-    !author |
+  if (!title ||
+    !author ||
     !pages) {
     return;
   }
@@ -71,8 +71,8 @@ const renderBook = (book) => {
 
   fields.forEach(key => {
     const p = document.createElement('p');
-    p.textContent = `${book[key]}`
-    card.appendChild(p)
+    p.textContent = `${book[key]}`;
+    card.appendChild(p);
   })
 
   const buttonDiv = document.createElement('div');
@@ -84,11 +84,24 @@ const renderBook = (book) => {
   statusBtn.textContent = book.status ? 'read' : 'unread';
   buttonDiv.appendChild(statusBtn);
 
+  statusBtn.addEventListener('click', () => {
+    changeStatus(statusBtn);
+    bookArray = getFromStorage();
+    const updatedArray = bookArray.map(item =>
+      item.id === book.id ? {...item, status: !item.status } : item
+    );
+    bookArray = updatedArray;
+    saveToStorage(bookArray);
+  })
+
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'button';
   deleteBtn.textContent = 'Delete';
   buttonDiv.appendChild(deleteBtn);
 
+  deleteBtn.addEventListener('click', () => {
+    removeBook(book.id);
+  })
 }
 
 const saveToStorage = (bookArray) => {
@@ -99,6 +112,31 @@ const getFromStorage = () => {
   const storedBooks = localStorage.getItem('books');
   const bookList = JSON.parse(storedBooks);
   return bookList;
+}
+
+const removeFromStorage = (id) => {
+  const bookList = getFromStorage();
+  const filteredList = bookList.filter((book) => book.id !== id);
+  bookArray = filteredList;
+  saveToStorage(bookArray);
+}
+
+const removeBook  = (id) => {
+  const card = document.getElementById(id);
+  card.remove();
+  removeFromStorage(id);
+}
+
+const changeStatus = (button) => {
+  
+  if (button.className === 'button-read'){
+    button.className = 'button-unread';
+    button.textContent = 'unread';
+  }
+  else {
+    button.className = 'button-read';
+    button.textContent = 'read';
+  }
 }
 
 addBtn.addEventListener("click", (e) => {
@@ -130,22 +168,30 @@ submitBtn.addEventListener('click', (e) => {
     alert('Add missing fields')
     return;
   }
+  bookArray = getFromStorage();
+  const exist = bookArray.some(item => 
+    item.title === book.title &&
+    item.author === book.author
+  )
+  if (exist){
+    alert('This book exists')
+    return;
+  }
   bookArray.push(book);
   closeModal();
   clearInputs();
   renderBook(book);
   saveToStorage(bookArray);
-})
+});
 
 window.addEventListener('load', () => {
-  const bookArray = getFromStorage();
-
+  bookArray = getFromStorage();
   if(!bookArray){
     return;
   }
 
   bookArray.forEach(book => {
     renderBook(book);
-  })
+  });
   
-})
+});
