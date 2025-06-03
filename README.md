@@ -3,6 +3,9 @@
 A simple Library management app where users can add, track, and manage books. Built with **HTML**, **CSS**, and **JavaScript**. It supports basic CRUD operations and stores data in **Local Storage**.
 
 ---
+## 🌐 Live Preview
+
+[🔗 View Project Live](https://garfieldas.github.io/libary-app/)
 
 ## 🚀 Features
 
@@ -16,7 +19,7 @@ A simple Library management app where users can add, track, and manage books. Bu
 
 ## 🖼️ Screenshots
 
-![Library App Screenshot](https://i.ibb.co/jPv4794C/Screenshot-2025-06-03-at-23-14-14.png)
+![Library App Screenshot](https://i.ibb.co/mmdZddG/Screenshot-2025-06-03-at-23-03-18.png)
 
 ![Library App Screenshot](https://i.ibb.co/ccrm7z58/Screenshot-2025-06-03-at-22-42-18.png)
 
