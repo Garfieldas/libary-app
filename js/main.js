@@ -2,6 +2,24 @@ const modal = document.querySelector("#modal");
 const addBtn = document.querySelector("#addBtn");
 const closeBtn = document.querySelector(".close");
 
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
+const pagesInput = document.querySelector('#pages');
+const statusInput = document.querySelector('#status');
+const submitBtn = document.querySelector('#submitBtn');
+
+const bookArray = [];
+
+function Book(id, title, author, pages, status) {
+
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+
+}
+
 const openModal = () => {
   modal.showModal();
 };
