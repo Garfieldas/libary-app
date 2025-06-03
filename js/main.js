@@ -91,6 +91,16 @@ const renderBook = (book) => {
 
 }
 
+const saveToStorage = (bookArray) => {
+    localStorage.setItem('books', JSON.stringify(bookArray));
+}
+
+const getFromStorage = () => {
+  const storedBooks = localStorage.getItem('books');
+  const bookList = JSON.parse(storedBooks);
+  return bookList;
+}
+
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   openModal();
@@ -124,4 +134,18 @@ submitBtn.addEventListener('click', (e) => {
   closeModal();
   clearInputs();
   renderBook(book);
+  saveToStorage(bookArray);
+})
+
+window.addEventListener('load', () => {
+  const bookArray = getFromStorage();
+
+  if(!bookArray){
+    return;
+  }
+
+  bookArray.forEach(book => {
+    renderBook(book);
+  })
+  
 })
