@@ -5,6 +5,8 @@
     --button-color: #FFE8CD;
     --text-color: #805799;
     --header-color: #FFD6BA;
+    --read-color: #579960;
+    --unread-color: #c21616;
 }
 
 body, html {
@@ -17,12 +19,22 @@ body, html {
     min-height: 100%;
 }
 
-.button {
+.button, .button-read, .button-unread {
     background-color: var(--text-color);
     color: var(--main-color);
     font-size: clamp(0.5rem, 1.2rem, 1.2rem);
     border-radius: 50px;
     padding: 0.5rem;
+}
+
+.button-read {
+    background-color: var(--read-color);
+    padding: 0.2rem;
+}
+
+.button-unread {
+    background-color: var(--unread-color);
+    padding: 0.2rem;
 }
 
 .brand {
@@ -100,6 +112,7 @@ input[type="checkbox"] {
     align-self: center;
     display: grid;
     place-content: center;
+    cursor: pointer;
 }
 
 input[type="checkbox"]::before {
@@ -117,6 +130,7 @@ input[type="checkbox"]:checked::before {
 
 form .button {
     padding: 0.1rem;
+    cursor: pointer;
 }
 
 #checkbox {
