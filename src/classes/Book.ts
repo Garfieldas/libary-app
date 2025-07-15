@@ -13,5 +13,5 @@ export class Book  {
     this.pages = pages;
     this.status = status;
   }
-  
+
 }
