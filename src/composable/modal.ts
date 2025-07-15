@@ -1,7 +1,8 @@
-export const toggleModal = () => {
+export const useeModal = () => {
 
-    const modal = document.querySelector('modal');
-    const overlay = document.querySelector('overlay');
+    const modal = document.querySelector('.modal');
+    const overlay = document.querySelector('.overlay');
+    const addBtn = document.querySelector('#addBook');
 
     const showModal = () => {
         modal?.classList.remove('hidden');
@@ -14,9 +15,9 @@ export const toggleModal = () => {
     }
 
     return {
-        modal,
-        overlay,
         showModal,
-        closeModal
+        closeModal,
+        addBtn,
+        overlay
     }
 }
