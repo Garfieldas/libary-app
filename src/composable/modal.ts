@@ -3,9 +3,9 @@ export const useModal = () => {
     const modal = document.querySelector('.modal');
     const overlay = document.querySelector('.overlay');
     const addBtn = document.querySelector('#addBook');
-    const bookTitle = document.querySelector<HTMLInputElement>('#title');
-    const bookAuthor = document.querySelector<HTMLInputElement>('#author');
-    const bookPages = document.querySelector<HTMLInputElement>('#pages');
+    let bookTitle = document.querySelector<HTMLInputElement>('#title');
+    let bookAuthor = document.querySelector<HTMLInputElement>('#author');
+    let bookPages = document.querySelector<HTMLInputElement>('#pages');
     const submitBtn = document.querySelector('#submit');
 
     const showModal = () => {
@@ -29,12 +29,19 @@ export const useModal = () => {
         }
     }
 
+    const ressetForm = () => {
+        bookTitle!.value = '';
+        bookAuthor!.value = '';
+        bookPages!.value = '';
+    }
+
     return {
         showModal,
         closeModal,
         addBtn,
         overlay,
         getFormValues,
-        submitBtn
+        submitBtn,
+        ressetForm
     }
 }
