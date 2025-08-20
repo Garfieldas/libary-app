@@ -9,7 +9,7 @@ export const BookCard = (book: Book) => {
     const i = document.createElement('i');
     i.className = 'fa-solid fa-bookmark';
     h3.appendChild(i);
-    const title = document.createTextNode(' Book title')
+    const title = document.createTextNode(` ${book.title}`)
     h3.appendChild(title);
     card.appendChild(h3);
 
@@ -17,14 +17,14 @@ export const BookCard = (book: Book) => {
     const strong1 = document.createElement('strong');
     strong1.textContent = 'Author: ';
     p1.appendChild(strong1);
-    const author = document.createTextNode('John Doe')
+    const author = document.createTextNode(`${book.author}`)
     p1.appendChild(author);
     card.appendChild(p1);
 
     const p2 = document.createElement('p');
     const strong2 = document.createElement('strong');
     strong2.textContent = 'Pages: ';
-    const pages = document.createTextNode('100')
+    const pages = document.createTextNode(`${book.pages}`)
     p2.appendChild(strong2);
     p2.appendChild(pages);
     card.appendChild(p2);
