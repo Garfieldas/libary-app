@@ -98,6 +98,10 @@ section {
     background-color: var(--grey);
 }
 
+.success {
+    background-color: var(--success);
+}
+
 .danger {
     background-color: var(--danger);
 }
@@ -130,9 +134,6 @@ section {
 .modal label {
     margin-bottom: 0.3rem;
     color: black;
-}
-.modal .action-btn {
-    background-color: var(--success);
 }
 
 form {

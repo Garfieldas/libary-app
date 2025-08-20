@@ -33,8 +33,8 @@ export const BookCard = (book: Book) => {
     buttonsContainer.className = 'button-group';
 
     const statusBtn = document.createElement('button');
-    statusBtn.className = 'action-btn success';
-    statusBtn.textContent = 'Read';
+    statusBtn.className = book.status ? 'action-btn success' : 'action-btn';
+    statusBtn.textContent = book.status ? 'Read': 'Not Read';
     buttonsContainer.appendChild(statusBtn);
 
     const removeBtn = document.createElement('button');
