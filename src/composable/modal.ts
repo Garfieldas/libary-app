@@ -19,9 +19,9 @@ export const useModal = () => {
     }
 
     const getFormValues = () => {
-        const title = bookTitle?.value;
-        const author = bookAuthor?.value;
-        const pages = bookPages?.value;
+        const title = bookTitle?.value.trim();
+        const author = bookAuthor?.value.trim();
+        const pages = bookPages?.value.trim();
         return {
             title,
             author,
