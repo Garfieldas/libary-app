@@ -1,6 +1,6 @@
-import { useeModal } from "./composable/modal";
+import { useModal } from "./composable/modal";
 
-const { showModal, closeModal, addBtn, overlay  } = useeModal();
+const { showModal, closeModal, addBtn, overlay  } = useModal();
 
 addBtn?.addEventListener('click', () => {
     showModal();
