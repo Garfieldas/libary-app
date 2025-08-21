@@ -5,7 +5,7 @@ import { Book } from "./classes/Book";
 
 const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
 
-const { addToStorage, readfromStorage } = useLocalStorage();
+const { addToStorage, readFromStorage, deleteFromStorage } = useLocalStorage();
 
 addBtn?.addEventListener("click", () => {
   showModal();
@@ -38,7 +38,7 @@ submitBtn?.addEventListener("click", (e) => {
 });
 
 window.addEventListener('load', () => {
-  const books = readfromStorage();
+  const books = readFromStorage();
   if (!books) return;
   books.forEach((book: Book) => {
     BookCard(book);

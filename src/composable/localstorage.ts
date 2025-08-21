@@ -14,11 +14,20 @@ export const useLocalStorage = () => {
     }
   };
 
-  const readfromStorage = () => {
+  const readFromStorage = () => {
     const storage = localStorage.getItem("books");
     if (!storage) return;
     return JSON.parse(storage);
   };
 
-  return { addToStorage, readfromStorage };
+  const deleteFromStorage = (id: string) => {
+    const storage: string | null = localStorage.getItem("books");
+    const books = Array.from(JSON.parse(storage!));
+    const filteredBooks = JSON.stringify(
+      books.filter((item: any) => item.id !== id)
+    );
+    return localStorage.setItem("books", filteredBooks);
+  };
+
+  return { addToStorage, readFromStorage, deleteFromStorage };
 };
