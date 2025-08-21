@@ -39,7 +39,7 @@ submitBtn?.addEventListener("click", (e) => {
 
 window.addEventListener('load', () => {
   const books = readfromStorage();
-  console.log(books)
+  if (!books) return;
   books.forEach((book: Book) => {
     BookCard(book);
   });
