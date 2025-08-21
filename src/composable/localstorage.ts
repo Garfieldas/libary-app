@@ -1,7 +1,6 @@
 import type { Book } from "../classes/Book";
 
 export const useLocalStorage = () => {
-
   const addToStorage = (book: Book) => {
     const exist = localStorage.getItem("books");
 
@@ -14,6 +13,12 @@ export const useLocalStorage = () => {
       return localStorage.setItem("books", JSON.stringify(books));
     }
   };
-  
-  return addToStorage
+
+  const readfromStorage = () => {
+    const storage = localStorage.getItem("books");
+    if (!storage) return;
+    return JSON.parse(storage);
+  };
+
+  return { addToStorage, readfromStorage };
 };

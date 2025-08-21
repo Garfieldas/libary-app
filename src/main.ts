@@ -1,10 +1,11 @@
 import { BookCard } from "./components/BookCard";
 import { useLocalStorage } from "./composable/localstorage";
 import { useModal } from "./composable/modal";
+import { Book } from "./classes/Book";
 
 const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
 
-const addToStorage = useLocalStorage();
+const { addToStorage, readfromStorage } = useLocalStorage();
 
 addBtn?.addEventListener("click", () => {
   showModal();
@@ -35,3 +36,11 @@ submitBtn?.addEventListener("click", (e) => {
     closeModal();
   }
 });
+
+window.addEventListener('load', () => {
+  const books = readfromStorage();
+  console.log(books)
+  books.forEach((book: Book) => {
+    BookCard(book);
+  });
+})
