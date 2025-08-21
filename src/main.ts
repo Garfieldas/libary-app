@@ -1,8 +1,10 @@
 import { BookCard } from "./components/BookCard";
+import { useLocalStorage } from "./composable/localstorage";
 import { useModal } from "./composable/modal";
 
-const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } =
-  useModal();
+const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
+
+const addToStorage = useLocalStorage();
 
 addBtn?.addEventListener("click", () => {
   showModal();
@@ -23,6 +25,7 @@ submitBtn?.addEventListener("click", (e) => {
       const pageNumber = parseInt(pages);
       const status = false;
       BookCard({ title, author, pages: pageNumber, status });
+      addToStorage({ title, author, pages: pageNumber, status })
       alert('Book added successfully!');
       closeModal();
       ressetForm();
