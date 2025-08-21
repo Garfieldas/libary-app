@@ -5,7 +5,7 @@ import { Book } from "./classes/Book";
 
 const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
 
-const { addToStorage, readFromStorage, deleteFromStorage } = useLocalStorage();
+const { addToStorage, readFromStorage } = useLocalStorage();
 
 addBtn?.addEventListener("click", () => {
   showModal();
@@ -25,8 +25,9 @@ submitBtn?.addEventListener("click", (e) => {
     if (title && author && pages) {
       const pageNumber = parseInt(pages);
       const status = false;
-      BookCard({ title, author, pages: pageNumber, status });
-      addToStorage({ title, author, pages: pageNumber, status })
+      const newBook = new Book(title, author, pageNumber, status);
+      BookCard(newBook);
+      addToStorage(newBook)
       alert('Book added successfully!');
       closeModal();
       ressetForm();
