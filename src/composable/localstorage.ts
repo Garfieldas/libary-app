@@ -5,7 +5,9 @@ export const useLocalStorage = () => {
     const exist = localStorage.getItem("books");
 
     if (!exist) {
-      return localStorage.setItem("books", JSON.stringify(book));
+      const books = [];
+      books.push(book);
+      return localStorage.setItem("books", JSON.stringify(books));
     } else {
       const storage: string | null = localStorage.getItem("books");
       const books = Array.from(JSON.parse(storage!));
