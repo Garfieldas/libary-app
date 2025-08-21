@@ -17,15 +17,14 @@ overlay?.addEventListener("click", () => {
 
 submitBtn?.addEventListener("click", (e) => {
   e.preventDefault();
-  const { title, author, pages } = getFormValues();
+  const { title, author, pages, status } = getFormValues();
   if (!title || !author || !pages) {
     alert("All fields are required");
   }
   try {
     if (title && author && pages) {
       const pageNumber = parseInt(pages);
-      const status = false;
-      const newBook = new Book(title, author, pageNumber, status);
+      const newBook = new Book(title, author, pageNumber, status!);
       BookCard(newBook);
       addToStorage(newBook)
       alert('Book added successfully!');
