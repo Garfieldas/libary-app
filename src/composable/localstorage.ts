@@ -31,5 +31,18 @@ export const useLocalStorage = () => {
     return localStorage.setItem("books", filteredBooks);
   };
 
+  const updateLocalStorage = (id: string) => {
+    const storage: string | null = localStorage.getItem("books");
+    const books = Array.from(JSON.parse(storage!));
+    const updatedBooks = JSON.stringify(
+      books.map((item: any) => {
+        if(item.id === id) {
+          item.status = !item.status;
+        }
+      })
+    )
+    return localStorage.setItem("books", updatedBooks);
+  }
+
   return { addToStorage, readFromStorage, deleteFromStorage };
 };
