@@ -2,10 +2,13 @@ import { BookCard } from "./components/BookCard";
 import { useLocalStorage } from "./composable/localstorage";
 import { useModal } from "./composable/modal";
 import { Book } from "./classes/Book";
+import { useNotifications } from "./composable/notification";
 
 const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
 
 const { addToStorage, readFromStorage } = useLocalStorage();
+
+const { addSuccessNotification, addErrorNotification } = useNotifications();
 
 addBtn?.addEventListener("click", () => {
   showModal();
@@ -19,7 +22,7 @@ submitBtn?.addEventListener("click", (e) => {
   e.preventDefault();
   const { title, author, pages, status } = getFormValues();
   if (!title || !author || !pages) {
-    alert("All fields are required");
+    addErrorNotification('All fields are required')
   }
   try {
     if (title && author && pages) {
@@ -27,12 +30,12 @@ submitBtn?.addEventListener("click", (e) => {
       const newBook = new Book(title, author, pageNumber, status!);
       BookCard(newBook);
       addToStorage(newBook)
-      alert('Book added successfully!');
+      addSuccessNotification('Book added!');
       closeModal();
       ressetForm();
     }
   } catch (error: any) {
-    alert('Something went wrong');
+    addErrorNotification(error);
     closeModal();
   }
 });
@@ -43,4 +46,5 @@ window.addEventListener('load', () => {
   books.forEach((book: Book) => {
     BookCard(book);
   });
+  addSuccessNotification('Books loaded!');
 })
