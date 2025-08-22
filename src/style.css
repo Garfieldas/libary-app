@@ -151,6 +151,12 @@ form {
     flex-direction: column;
 }
 
+.checkbox {
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
+}
+
 .overlay {
     position: fixed;
     top: 0;

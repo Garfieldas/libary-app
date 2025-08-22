@@ -1,9 +1,13 @@
-import type { Book } from "../classes/Book"
+import type { Book } from "../classes/Book";
+import { useLocalStorage } from "../composable/localstorage";
+
+const { deleteFromStorage, updateLocalStorage } = useLocalStorage();
 
 export const BookCard = (book: Book) => {
     const cardContainer = document.querySelector('.card-wrapper');
     const card = document.createElement('div');
     card.className = 'card';
+    card.setAttribute('id', book.id!);
 
     const h3 = document.createElement('h3');
     const i = document.createElement('i');
@@ -35,11 +39,25 @@ export const BookCard = (book: Book) => {
     const statusBtn = document.createElement('button');
     statusBtn.className = book.status ? 'action-btn success' : 'action-btn';
     statusBtn.textContent = book.status ? 'Read': 'Not Read';
+    statusBtn.addEventListener('click', () => {
+        const id = book.id;
+        book.status = !book.status;
+        updateLocalStorage(id!);
+        statusBtn.textContent = book.status ? 'Read': 'Not Read';
+        statusBtn.className = book.status ? 'action-btn success' : 'action-btn';
+    })
     buttonsContainer.appendChild(statusBtn);
 
     const removeBtn = document.createElement('button');
     removeBtn.className = 'action-btn danger';
     removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', () => {
+        const id = book.id;
+        deleteFromStorage(id!);
+        const bookCard = document.getElementById(`${id}`);
+        bookCard?.remove();
+    })
+
     buttonsContainer.appendChild(removeBtn);
     card.appendChild(buttonsContainer);
 
