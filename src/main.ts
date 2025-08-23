@@ -42,7 +42,7 @@ submitBtn?.addEventListener("click", (e) => {
 
 window.addEventListener('load', () => {
   const books = readFromStorage();
-  if (!books) return;
+  if (!books || books.length === 0) return;
   books.forEach((book: Book) => {
     BookCard(book);
   });
