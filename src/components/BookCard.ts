@@ -1,7 +1,10 @@
 import type { Book } from "../classes/Book";
 import { useLocalStorage } from "../composable/localstorage";
+import { useNotifications } from "../composable/notification";
 
 const { deleteFromStorage, updateLocalStorage } = useLocalStorage();
+
+const { addSuccessNotification } = useNotifications();
 
 export const BookCard = (book: Book) => {
     const cardContainer = document.querySelector('.card-wrapper');
@@ -56,6 +59,7 @@ export const BookCard = (book: Book) => {
         deleteFromStorage(id!);
         const bookCard = document.getElementById(`${id}`);
         bookCard?.remove();
+        addSuccessNotification('Book removed from libary');
     })
 
     buttonsContainer.appendChild(removeBtn);
