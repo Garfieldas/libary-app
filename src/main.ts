@@ -6,7 +6,7 @@ import { useNotifications } from "./composable/notification";
 
 const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
 
-const { addToStorage, readFromStorage } = useLocalStorage();
+const { addToStorage, readFromStorage, existingBooks } = useLocalStorage();
 
 const { addSuccessNotification, addErrorNotification } = useNotifications();
 
@@ -22,7 +22,13 @@ submitBtn?.addEventListener("click", (e) => {
   e.preventDefault();
   const { title, author, pages, status } = getFormValues();
   if (!title || !author || !pages) {
-    addErrorNotification('All fields are required')
+    addErrorNotification('All fields are required');
+    return;
+  }
+  const exist = existingBooks(title, author);
+  if (exist && exist.length > 0) {
+    addErrorNotification('This book already exists!');
+    return;
   }
   try {
     if (title && author && pages) {

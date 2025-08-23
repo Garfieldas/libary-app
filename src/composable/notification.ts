@@ -10,6 +10,12 @@ export const useNotifications = () => {
         }
     }
 
+    const removeNotification = () => {
+        setTimeout(() => {
+            replacePreviousNotifications();
+        }, 3000)
+    }
+
     const addSuccessNotification = (message: string) => {
         replacePreviousNotifications();
         notificationComponent(true, message);
@@ -19,12 +25,6 @@ export const useNotifications = () => {
         replacePreviousNotifications();
         notificationComponent(false, message);
         removeNotification();
-    }
-
-    const removeNotification = () => {
-        setTimeout(() => {
-            container?.removeChild(container.children[0]);
-        }, 3000)
     }
 
     return { addSuccessNotification, addErrorNotification };
