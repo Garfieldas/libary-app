@@ -6,7 +6,7 @@ import { useNotifications } from "./composable/notification";
 
 const { showModal, closeModal, addBtn, overlay, getFormValues, submitBtn, ressetForm } = useModal();
 
-const { addToStorage, readFromStorage, existingBooks } = useLocalStorage();
+const { readFromStorage, addToStorage, existingBooks } = useLocalStorage();
 
 const { addSuccessNotification, addErrorNotification } = useNotifications();
 
