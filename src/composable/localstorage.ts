@@ -38,7 +38,23 @@ export const useLocalStorage = () => {
     books[bookIndex].status = !books[bookIndex].status;
     const updatedBooks = JSON.stringify(books);
     return localStorage.setItem("books", updatedBooks);
-  }
+  };
 
-  return { addToStorage, readFromStorage, deleteFromStorage, updateLocalStorage };
+  const existingBooks = (title: string, author: string) => {
+    const existingBooks = readFromStorage();
+    const exist = existingBooks.filter(
+      (item: Book) =>
+        item.title.toLowerCase() === title.toLowerCase() &&
+        item.author.toLowerCase() === author.toLowerCase()
+    );
+    return exist;
+  };
+
+  return {
+    addToStorage,
+    readFromStorage,
+    deleteFromStorage,
+    updateLocalStorage,
+    existingBooks,
+  };
 };
